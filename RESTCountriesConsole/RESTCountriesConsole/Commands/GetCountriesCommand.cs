@@ -8,7 +8,7 @@ namespace RESTCountriesConsole.Commands;
 internal class GetCountriesCommand : AsyncCommand<GetCountriesCommandSettings>
 {
     private readonly RESTCountriesService _service;
-    private readonly List<string> _possibleOperations = new() { "all", "name", "fullname", "full name", "code", "codes", "currency", "language", "capital", "region", "subregion" };
+    private readonly List<string> _possibleOperations = new() { "all", "name", "fullname", "code", "codes", "currency", "language", "capital", "region", "subregion" };
 
     public GetCountriesCommand()
     {
@@ -76,7 +76,6 @@ internal class GetCountriesCommand : AsyncCommand<GetCountriesCommandSettings>
             case "name":
                 return await _service.GetCountriesByNameAsync(settings.Parameter);
             case "fullname":
-            case "full name":
                 Country fullNameCountry = await _service.GetCountryByFullNameAsync(settings.Parameter);
                 return fullNameCountry is null ? Enumerable.Empty<Country>() : new List<Country>() { fullNameCountry };
             case "code":
@@ -123,7 +122,7 @@ internal class GetCountriesCommand : AsyncCommand<GetCountriesCommandSettings>
             settings.Operation = AnsiConsole.Prompt(
                new SelectionPrompt<string>()
                    .Title("The provided operation was not recognized. Please select the operation.")
-                   .PageSize(10)
+                   .PageSize(15)
                    .AddChoices(_possibleOperations));
         }
 
