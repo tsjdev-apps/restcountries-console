@@ -1,2 +1,12 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using RESTCountriesConsole.Commands;
+using Spectre.Console.Cli;
+
+
+CommandApp app = new();
+
+app.Configure(configuration =>
+{
+    configuration.AddCommand<GetCountriesCommand>("get");
+});
+
+await app.RunAsync(args);
