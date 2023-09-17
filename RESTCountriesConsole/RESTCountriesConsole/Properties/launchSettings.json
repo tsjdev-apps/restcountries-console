@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "RESTCountriesConsole": {
+      "commandName": "Project",
+      "commandLineArgs": "get fullname -p germany"
+    }
+  }
+}
