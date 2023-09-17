@@ -20,7 +20,10 @@ jobs:
         dotnet-version: 7.0.x
         
     - name: Restore dependencies
-      run: dotnet restore RESTCountriesConsole\RESTCountriesConsole\RESTCountriesConsole.csproj
+      run: dotnet restore 
+      working-directory: RESTCountriesConsole
       
     - name: Build
-      run: dotnet build RESTCountriesConsole\RESTCountriesConsole\RESTCountriesConsole.csproj --no-restore
+      run: dotnet build --no-restore
+      working-directory: RESTCountriesConsole
+
